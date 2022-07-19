@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:keyWidth="8.52%p"
+    app:keyHeight="@dimen/space_xxlarge"
+    app:horizontalGap="1.33%p"
+    app:verticalGap="@dimen/space_xsmall_large">
+
+    <Row>
+        <Key
+            app:codes="38"
+            app:horizontalGap="0.5%p"
+            app:keyLabel="&#38;" />
+        <Key
+            app:codes="34"
+            app:keyLabel="&#34;" />
+        <Key
+            app:codes="59"
+            app:keyLabel="&#59;" />
+        <Key
+            app:codes="94"
+            app:keyLabel="&#94;" />
+        <Key
+            app:codes="44"
+            app:keyLabel="&#44;" />
+        <Key
+            app:codes="124"
+            app:keyLabel="&#124;" />
+        <Key
+            app:codes="36"
+            app:keyLabel="&#36;" />
+        <Key
+            app:codes="42"
+            app:keyLabel="&#42;" />
+        <Key
+            app:codes="58"
+            app:keyLabel="&#58;" />
+        <Key
+            app:codes="39"
+            app:keyLabel="&#39;" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="63"
+            app:horizontalGap="0.5%p"
+            app:keyLabel="\?" />
+        <Key
+            app:codes="123"
+            app:keyLabel="&#123;" />
+        <Key
+            app:codes="91"
+            app:keyLabel="&#91;" />
+        <Key
+            app:codes="126"
+            app:keyLabel="&#126;" />
+        <Key
+            app:codes="35"
+            app:keyLabel="&#35;" />
+        <Key
+            app:codes="125"
+            app:keyLabel="&#125;" />
+        <Key
+            app:codes="46"
+            app:keyLabel="&#46;" />
+        <Key
+            app:codes="93"
+            app:keyLabel="&#93;" />
+        <Key
+            app:codes="92"
+            app:keyLabel="&#92;" />
+        <Key
+            app:codes="33"
+            app:keyLabel="&#33;" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="40"
+            app:horizontalGap="0.5%p"
+            app:keyLabel="&#40;" />
+        <Key
+            app:codes="37"
+            app:keyLabel="&#37;" />
+        <Key
+            app:codes="45"
+            app:keyLabel="&#45;" />
+        <Key
+            app:codes="95"
+            app:keyLabel="&#95;" />
+        <Key
+            app:codes="43"
+            app:keyLabel="&#43;" />
+        <Key
+            app:codes="47"
+            app:keyLabel="&#47;" />
+        <Key
+            app:codes="41"
+            app:keyLabel="&#41;" />
+        <Key
+            app:codes="77"
+            app:keyLabel="&#77;" />
+        <Key
+            app:codes="60"
+            app:keyLabel="&#60;" />
+
+        <Key
+            app:codes="96"
+            app:keyLabel="&#96;" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="62"
+            app:horizontalGap="0.5%p"
+            app:keyLabel="&#62;" />
+        <Key
+            app:codes="64"
+            app:keyLabel="\@" />
+
+        <Key
+            app:codes="-7"
+            app:keyWidth="62.6%p"
+            app:isModifier="true"
+            app:keyIcon="@drawable/keyboard_backspace" />
+
+        <Key
+            app:codes="-5"
+            app:isRepeatable="true"
+            app:keyWidth="13.3%p"
+            app:keyIcon="@drawable/keyboard_delete" />
+    </Row>
+</Keyboard>

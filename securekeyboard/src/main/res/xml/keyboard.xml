@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:keyWidth="8.52%p"
+    app:keyHeight="@dimen/space_xxlarge"
+    app:horizontalGap="1.33%p"
+    app:verticalGap="@dimen/space_xsmall_large">
+
+    <Row>
+        <Key
+            app:codes="49"
+            app:horizontalGap="0.5%p"
+            app:keyLabel="1" />
+        <Key
+            app:codes="50"
+            app:keyLabel="2" />
+        <Key
+            app:codes="51"
+            app:keyLabel="3" />
+        <Key
+            app:codes="52"
+            app:keyLabel="4" />
+        <Key
+            app:codes="53"
+            app:keyLabel="5" />
+        <Key
+            app:codes="54"
+            app:keyLabel="6" />
+        <Key
+            app:codes="55"
+            app:keyLabel="7" />
+        <Key
+            app:codes="56"
+            app:keyLabel="8" />
+        <Key
+            app:codes="57"
+            app:keyLabel="9" />
+        <Key
+            app:codes="48"
+            app:keyLabel="0" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="113"
+            app:horizontalGap="0.5%p"
+            app:keyLabel="q" />
+        <Key
+            app:codes="119"
+            app:keyLabel="w" />
+        <Key
+            app:codes="101"
+            app:keyLabel="e" />
+        <Key
+            app:codes="114"
+            app:keyLabel="r" />
+        <Key
+            app:codes="116"
+            app:keyLabel="t" />
+        <Key
+            app:codes="121"
+            app:keyLabel="y" />
+        <Key
+            app:codes="117"
+            app:keyLabel="u" />
+        <Key
+            app:codes="105"
+            app:keyLabel="i" />
+        <Key
+            app:codes="111"
+            app:keyLabel="o" />
+        <Key
+            app:codes="112"
+            app:keyLabel="p" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="-1"
+            app:isModifier="true"
+            app:isSticky="true"
+            app:horizontalGap="0.5%p"
+            app:keyIcon="@drawable/keyboard_shift" />
+
+        <Key
+            app:codes="97"
+            app:keyLabel="a" />
+
+        <Key
+            app:codes="115"
+            app:keyLabel="s" />
+        <Key
+            app:codes="100"
+            app:keyLabel="d" />
+        <Key
+            app:codes="102"
+            app:keyLabel="f" />
+        <Key
+            app:codes="103"
+            app:keyLabel="g" />
+        <Key
+            app:codes="104"
+            app:keyLabel="h" />
+        <Key
+            app:codes="106"
+            app:keyLabel="j" />
+        <Key
+            app:codes="107"
+            app:keyLabel="k" />
+        <Key
+            app:codes="108"
+            app:keyLabel="l" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="-7"
+            app:isModifier="true"
+            app:horizontalGap="0.5%p"
+            app:keyWidth="13.3%p"
+            app:keyIcon="@drawable/keyboard_backspace" />
+
+        <Key
+            app:codes="122"
+            app:keyLabel="z" />
+        <Key
+            app:codes="120"
+            app:keyLabel="x" />
+        <Key
+            app:codes="99"
+            app:keyLabel="c" />
+        <Key
+            app:codes="118"
+            app:keyLabel="v" />
+        <Key
+            app:codes="98"
+            app:keyLabel="b" />
+        <Key
+            app:codes="110"
+            app:keyLabel="n" />
+        <Key
+            app:codes="109"
+            app:keyLabel="m" />
+        <Key
+            app:codes="-5"
+            app:isRepeatable="true"
+            app:keyWidth="13.3%p"
+            app:keyIcon="@drawable/keyboard_delete" />
+    </Row>
+</Keyboard>

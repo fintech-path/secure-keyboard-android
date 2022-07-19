@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/space_xsmall_large"
+        android:paddingBottom="@dimen/space_xsmall_large">
+
+        <TextView
+            android:id="@+id/keyboard_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/keyboard_title"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/txt_s_l" />
+
+        <TextView
+            android:id="@+id/keyboard_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="9dp"
+            android:text="@string/keyboard_done"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="@dimen/txt_m"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/keyboard_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="9dp"
+            android:text="@string/keyboard_symbol"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="@dimen/txt_m"
+            tools:ignore="RelativeOverlap" />
+    </RelativeLayout>
+
+    <android.keyboard.KeyboardView
+        android:id="@+id/secure_keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="@dimen/space_xsmall_large"
+        android:background="@android:color/transparent"
+        app:keyBackground="@drawable/key_background"
+        app:keyTextColor="@color/key_text"
+        app:keyTextSize="22.5dp"
+        app:shadowRadius="0" />
+</LinearLayout>

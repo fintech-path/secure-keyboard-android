@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TEXT SIZES-->
+    <dimen name="txt_xxxs">8sp</dimen>
+    <dimen name="txt_xxs">10sp</dimen>
+    <dimen name="txt_xxs_l">11sp</dimen>
+    <dimen name="txt_xs">12sp</dimen>
+    <dimen name="txt_xs_l">13sp</dimen>
+    <dimen name="txt_xs_xl">14sp</dimen>
+    <dimen name="txt_s">15sp</dimen>
+    <dimen name="txt_s_l">16sp</dimen>
+    <dimen name="txt_m">17sp</dimen>
+    <dimen name="txt_xm">18sp</dimen>
+    <dimen name="txt_ml">21sp</dimen>
+    <dimen name="txt_mml">24sp</dimen>
+    <dimen name="txt_l">25sp</dimen>
+    <dimen name="txt_xl">30sp</dimen>
+    <dimen name="txt_xxl">35sp</dimen>
+    <dimen name="txt_4xl">40sp</dimen>
+    <dimen name="txt_5xl">45sp</dimen>
+    <dimen name="txt_6xl">48sp</dimen>
+
+    <!--SPACES-->
+    <dimen name="space_zero">0dp</dimen>
+    <dimen name="space_xxxsmall">1dp</dimen>
+    <dimen name="space_xxsmall">2dp</dimen>
+    <dimen name="space_xxsmallx">3dp</dimen>
+    <dimen name="space_xsmall">4dp</dimen>
+    <dimen name="space_xsmall_large">6dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_medium_xsmall">10dp</dimen>
+    <dimen name="space_medium_small">12dp</dimen>
+    <dimen name="space_medium_smallx">14dp</dimen>
+    <dimen name="space_medium_smallxx">15dp</dimen>
+    <dimen name="space_medium">16dp</dimen>
+    <dimen name="space_medium_large">20dp</dimen>
+    <dimen name="space_large">24dp</dimen>
+    <dimen name="space_xlarge">32dp</dimen>
+    <dimen name="space_xxlarge">44dp</dimen>
+    <dimen name="space_xxxlarge">64dp</dimen>
+</resources>

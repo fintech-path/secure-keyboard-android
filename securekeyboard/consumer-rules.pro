@@ -1,0 +1,1 @@
+-keep class com.hcxc.securekeyboard.SecureKeyboardManager{*;}

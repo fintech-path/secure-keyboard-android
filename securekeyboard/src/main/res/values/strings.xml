@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="keyboard_title">Secure Keyboard</string>
+    <string name="keyboard_done">Done</string>
+    <string name="keyboard_symbol">Symbol</string>
+    <string name="keyboard_abc">ABC</string>
+</resources>

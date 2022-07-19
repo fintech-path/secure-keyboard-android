@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">secure keyboard</string>
+    <string name="txt_shuffle">shuffle keyboard:</string>
+    <string name="txt_un_shuffle">normal keyboard:</string>
+</resources>

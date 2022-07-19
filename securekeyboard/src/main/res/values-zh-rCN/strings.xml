@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="keyboard_title">安全键盘</string>
+    <string name="keyboard_done">完成</string>
+    <string name="keyboard_symbol">符号</string>
+    <string name="keyboard_abc">字母</string>
+</resources>

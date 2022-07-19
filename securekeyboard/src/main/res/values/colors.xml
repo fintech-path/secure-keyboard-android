@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="keyboard_background">#D1D5D8</color>
+    <color name="key_pressed">#999999</color>
+    <color name="key_pressed_background">@android:color/holo_blue_dark</color>
+    <color name="key_normal">#ffffff</color>
+    <color name="key_text">#000000</color>
+    <color name="text_gray">#808080</color>
+    <color name="bg_divider">#F5F5F5</color>
+</resources>
