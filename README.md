@@ -1,11 +1,9 @@
-﻿![logo](images/logo.png)
-
 ![frame](images/frame.png)
 
 ### [README of Chinese](README_CN.md)
 
 # Secure Keyboard
-[![version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)](https://bintray.com/geyifeng/maven/immersionbar) [![author](https://img.shields.io/badge/author-hcxc-orange.svg)](https://github.com/gyf-dev)
+[![version](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)](https://bintray.com/geyifeng/maven/immersionbar) [![author](https://img.shields.io/badge/author-hcxc-orange.svg)](https://github.com/gyf-dev)
 
 ## About
 This library provides a secure keyboard.
@@ -32,7 +30,7 @@ User can customize the title and done button text.
 #### [Click me to Download the aar](./output/securekeyboard-release.aar)
 
 ## Release notes
-#### [Click me to view the release notes](https://github.com/gyf-dev/ImmersionBar/wiki)
+#### [Click me to view the release notes](./wiki/note.md)
 
 
 ## Documentation

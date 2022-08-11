@@ -1,10 +1,10 @@
-![logo](images/logo.png)
+
 
 ![frame](images/frame.png)
 
 
 # 安全键盘
-[![version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-0.1.0-brightgreen.svg)](https://bintray.com/geyifeng/maven/immersionbar) [![author](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-hcxc-orange.svg)](https://github.com/gyf-dev)
+[![version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.0.0-brightgreen.svg)](https://bintray.com/geyifeng/maven/immersionbar) [![author](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-hcxc-orange.svg)](https://github.com/gyf-dev)
 
 ## 项目介绍
 此库提供了一个安全键盘。
@@ -31,7 +31,7 @@
 #### [点我下载aar](./output/securekeyboard-release.aar)
 
 ## 版本说明
-#### [点我查看版本说明](https://github.com/gyf-dev/ImmersionBar/wiki)
+#### [点我查看版本说明](./wiki/note.md)
 
 
 ## 技术文档
