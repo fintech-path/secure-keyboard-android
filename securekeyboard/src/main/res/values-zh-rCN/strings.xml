@@ -4,4 +4,5 @@
     <string name="keyboard_done">完成</string>
     <string name="keyboard_symbol">符号</string>
     <string name="keyboard_abc">字母</string>
+    <string name="keyboard_123">123</string>
 </resources>

@@ -79,6 +79,8 @@ public class Keyboard {
     public static final int KEYCODE_DELETE = -5;
     public static final int KEYCODE_ALT = -6;
     public static final int KEYCODE_SPACE = -7;
+
+    public static final int KEYCODE_POINT_NUMBER_BOARD = -11;
     public String mCihperText;
 
     /** Keyboard label **/
