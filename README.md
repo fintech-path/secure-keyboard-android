@@ -1,6 +1,6 @@
 ![frame](images/frame.png)
 
-### [README of Chinese](README_CN.md)
+### [中文](README_CN.md)
 
 # Secure Keyboard
 [![version](https://img.shields.io/badge/version-1.0.0-brightgreen.svg)](https://bintray.com/geyifeng/maven/immersionbar) [![author](https://img.shields.io/badge/author-hcxc-orange.svg)](https://github.com/gyf-dev)
