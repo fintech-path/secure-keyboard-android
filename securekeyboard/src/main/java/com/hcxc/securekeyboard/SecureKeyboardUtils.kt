@@ -186,6 +186,16 @@ object SecureKeyboardUtils {
         encryptKeyboard(keyboard, allLabels, helper)
     }
 
+    fun generateNumberKeyboard(keyboard: Keyboard, shuffle: Boolean, helper: SecureEncryptHelper) {
+        val allLabels: MutableList<Char> = ArrayList<Char>().apply {
+            addAll(mutableListOf('1', '2', '3', '4', '5', '6', '7', '8', '9','0').apply {
+                if (shuffle)
+                    shuffle()
+            })
+        }
+        encryptKeyboard(keyboard, allLabels, helper)
+    }
+
     private fun encryptKeyboard(keyboard: Keyboard, allLabels: MutableList<Char>, helper: SecureEncryptHelper) {
         String(allLabels.toCharArray()).let {
                 helper.encrypt(it)

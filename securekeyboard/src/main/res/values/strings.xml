@@ -4,4 +4,5 @@
     <string name="keyboard_done">Done</string>
     <string name="keyboard_symbol">Symbol</string>
     <string name="keyboard_abc">ABC</string>
+    <string name="keyboard_123">123</string>
 </resources>

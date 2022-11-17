@@ -35,6 +35,7 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.hcxc.securekeyboard.SecureKeyboardUtils.generateKeyboard
+import com.hcxc.securekeyboard.SecureKeyboardUtils.generateNumberKeyboard
 import com.hcxc.securekeyboard.SecureKeyboardUtils.generateSymbolKeyboard
 import com.hcxc.securekeyboard.SecureKeyboardUtils.getLengthLimit
 import com.hcxc.securekeyboard.SecureKeyboardUtils.toLowerCase
@@ -42,7 +43,8 @@ import com.hcxc.securekeyboard.SecureKeyboardUtils.toUpperCase
 import java.lang.ref.WeakReference
 import java.util.concurrent.atomic.AtomicBoolean
 
-class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0
+class SecureKeyboardView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0
 ) : LinearLayout(
     context,
     attrs,
@@ -65,6 +67,9 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
     )
     private val symbolKeyboard = Keyboard(
         context, R.xml.keyboard_symbol
+    )
+    private val numberKeyboard = Keyboard(
+        context, R.xml.keyboard_number
     )
 
     private val hideAnimationListener: Animation.AnimationListener =
@@ -99,7 +104,7 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
             override fun onRelease(i: Int) {}
             override fun onKey(primaryCode: Int, keyCodes: IntArray) {
                 val plaintext: Editable = editTextRef?.get()?.text ?: return
-                val pos = editTextRef?.get()?.selectionStart?:0
+                val pos = editTextRef?.get()?.selectionStart ?: 0
                 if (primaryCode == Keyboard.KEYCODE_SHIFT) {
                     if (isCapitalized) {
                         isCapitalized = false
@@ -111,13 +116,13 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
                 } else if (primaryCode == Keyboard.KEYCODE_DELETE) {
                     if (plaintext.isNotEmpty()) {
                         if (pos > 0) {
-                            plaintext.delete(pos-1, pos)
+                            plaintext.delete(pos - 1, pos)
                         }
                     }
                     if (editTextRef?.get() != null) {
                         editTextRef?.get()?.text = plaintext
                         if (pos > 0) {
-                            editTextRef?.get()?.setSelection(pos-1)
+                            editTextRef?.get()?.setSelection(pos - 1)
                         }
                     }
                 } else {
@@ -126,10 +131,14 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
                         if (primaryCode == -7) {
                             code = 32
                         }
+                        if (primaryCode == -11) {
+                            code = 46
+                        }
                         plaintext.insert(pos, code.toChar().toString())
                         if (editTextRef?.get() != null) {
                             editTextRef?.get()?.text = plaintext
-                            editTextRef?.get()?.setSelection(pos+1)
+                            editTextRef?.get()
+                                ?.setSelection(if (plaintext.length == pos) pos else pos + 1)
                         }
                     }
                 }
@@ -204,6 +213,20 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
                 }
             }
         }
+
+
+        findViewById<TextView>(R.id.keyboard_number).setOnClickListener {
+            (it as TextView).setText(R.string.keyboard_123)
+
+            keyboardView?.run {
+
+                if (keyboard != numberKeyboard) {
+                    keyboard = numberKeyboard
+                    generateNumberKeyboard(keyboard, isShuffle, helper)
+                }
+
+            }
+        }
     }
 
     fun init(editText: EditText, popupWindow: PopupWindow, shuffle: Boolean) {
@@ -226,12 +249,12 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
         private var done: String = context.getString(R.string.keyboard_done)
         private lateinit var editText: EditText
 
-        fun setShuffle(shuffle: Boolean?) : Builder {
+        fun setShuffle(shuffle: Boolean?): Builder {
             shuffle?.let { this.shuffle = it }
             return this
         }
 
-        fun setTitleText(title: String?) : Builder {
+        fun setTitleText(title: String?): Builder {
             if (TextUtils.isEmpty(title)) {
                 return this
             }
@@ -239,7 +262,7 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
             return this
         }
 
-        fun setDoneText(done: String?) : Builder {
+        fun setDoneText(done: String?): Builder {
             if (TextUtils.isEmpty(done)) {
                 return this
             }
@@ -247,14 +270,16 @@ class SecureKeyboardView @JvmOverloads constructor(context: Context, attrs: Attr
             return this
         }
 
-        fun setEditText(editText: EditText) : Builder {
+        fun setEditText(editText: EditText): Builder {
             this.editText = editText
             return this
         }
 
         fun build() {
-            val contentView = LayoutInflater.from(context).inflate(R.layout.view_secure_popup, LinearLayout(context))
-            val secureKeyboard = contentView.findViewById<SecureKeyboardView>(R.id.secure_keyboard_view)
+            val contentView = LayoutInflater.from(context)
+                .inflate(R.layout.view_secure_popup, LinearLayout(context))
+            val secureKeyboard =
+                contentView.findViewById<SecureKeyboardView>(R.id.secure_keyboard_view)
             val popupWindow = PopupWindow(
                 contentView,
                 ViewGroup.LayoutParams.MATCH_PARENT,

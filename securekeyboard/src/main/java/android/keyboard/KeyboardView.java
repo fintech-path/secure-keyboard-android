@@ -31,6 +31,7 @@ import android.media.AudioManager;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -72,32 +73,36 @@ public class KeyboardView extends View {
         /**
          * Called when the user presses a key. This is sent before the {@link #onKey} is called.
          * For keys that repeat, this is only called once.
+         *
          * @param primaryCode the unicode of the key being pressed. If the touch is not on a valid
-         * key, the value will be zero.
+         *                    key, the value will be zero.
          */
         void onPress(int primaryCode);
 
         /**
          * Called when the user releases a key. This is sent after the {@link #onKey} is called.
          * For keys that repeat, this is only called once.
+         *
          * @param primaryCode the code of the key that was released
          */
         void onRelease(int primaryCode);
 
         /**
          * Send a key press to the listener.
+         *
          * @param primaryCode this is the key that was pressed
-         * @param keyCodes the codes for all the possible alternative keys
-         * with the primary code being the first. If the primary key code is
-         * a single character such as an alphabet or number or symbol, the alternatives
-         * will include other characters that may be on the same key or adjacent keys.
-         * These codes are useful to correct for accidental presses of a key adjacent to
-         * the intended key.
+         * @param keyCodes    the codes for all the possible alternative keys
+         *                    with the primary code being the first. If the primary key code is
+         *                    a single character such as an alphabet or number or symbol, the alternatives
+         *                    will include other characters that may be on the same key or adjacent keys.
+         *                    These codes are useful to correct for accidental presses of a key adjacent to
+         *                    the intended key.
          */
         void onKey(int primaryCode, int[] keyCodes);
 
         /**
          * Sends a sequence of characters to the listener.
+         *
          * @param text the sequence of characters to be displayed.
          */
         void onText(CharSequence text);
@@ -125,8 +130,8 @@ public class KeyboardView extends View {
 
     private static final boolean DEBUG = false;
     private static final int NOT_A_KEY = -1;
-    private static final int[] KEY_DELETE = { Keyboard.KEYCODE_DELETE };
-    private static final int[] LONG_PRESSABLE_STATE_SET = { R.attr.state_long_pressable };
+    private static final int[] KEY_DELETE = {Keyboard.KEYCODE_DELETE};
+    private static final int[] LONG_PRESSABLE_STATE_SET = {R.attr.state_long_pressable};
 
     private Keyboard mKeyboard;
     private int mCurrentKeyIndex = NOT_A_KEY;
@@ -149,7 +154,9 @@ public class KeyboardView extends View {
     private int mMiniKeyboardOffsetY;
     private Key[] mKeys;
 
-    /** Listener for {@link OnKeyboardActionListener}. */
+    /**
+     * Listener for {@link OnKeyboardActionListener}.
+     */
     private OnKeyboardActionListener mKeyboardActionListener;
 
     private static final int MSG_SHOW_PREVIEW = 1;
@@ -222,19 +229,33 @@ public class KeyboardView extends View {
     private static final int MULTITAP_INTERVAL = 300; // milliseconds
     private StringBuilder mPreviewLabel = new StringBuilder(1);
 
-    /** Whether the keyboard bitmap needs to be redrawn before it's blitted. **/
+    /**
+     * Whether the keyboard bitmap needs to be redrawn before it's blitted.
+     **/
     private boolean mDrawPending;
-    /** The dirty region in the keyboard bitmap */
+    /**
+     * The dirty region in the keyboard bitmap
+     */
     private Rect mDirtyRect = new Rect();
-    /** The keyboard bitmap for faster updates */
+    /**
+     * The keyboard bitmap for faster updates
+     */
     private Bitmap mBuffer;
-    /** Notes if the keyboard just changed, so that we could possibly reallocate the mBuffer. */
+    /**
+     * Notes if the keyboard just changed, so that we could possibly reallocate the mBuffer.
+     */
     private boolean mKeyboardChanged;
-    /** The canvas for the above mutable keyboard bitmap */
+    /**
+     * The canvas for the above mutable keyboard bitmap
+     */
     private Canvas mCanvas;
-    /** The audio manager for accessibility support */
+    /**
+     * The audio manager for accessibility support
+     */
     private AudioManager mAudioManager;
-    /** Whether the requirement of a headset to hear passwords if accessibility is enabled is announced. */
+    /**
+     * Whether the requirement of a headset to hear passwords if accessibility is enabled is announced.
+     */
     private boolean mHeadsetRequiredToHearPasswordsAnnounced;
 
     Handler mHandler;
@@ -418,6 +439,7 @@ public class KeyboardView extends View {
 
     /**
      * Returns the {@link OnKeyboardActionListener} object.
+     *
      * @return the listener attached to this keyboard
      */
     protected OnKeyboardActionListener getOnKeyboardActionListener() {
@@ -427,9 +449,10 @@ public class KeyboardView extends View {
     /**
      * Attaches a keyboard to this view. The keyboard can be switched at any time and the
      * view will re-layout itself to accommodate the keyboard.
+     *
+     * @param keyboard the keyboard to display in this view
      * @see Keyboard
      * @see #getKeyboard()
-     * @param keyboard the keyboard to display in this view
      */
     public void setKeyboard(Keyboard keyboard) {
         if (mKeyboard != null) {
@@ -450,6 +473,7 @@ public class KeyboardView extends View {
 
     /**
      * Returns the current keyboard being displayed by this view.
+     *
      * @return the currently attached keyboard
      * @see #setKeyboard(Keyboard)
      */
@@ -459,6 +483,7 @@ public class KeyboardView extends View {
 
     /**
      * Sets the state of the shift key of the keyboard, if any.
+     *
      * @param shifted whether or not to enable the state of the shift key
      * @return true if the shift key state changed, false if there was no change
      * @see KeyboardView#isShifted()
@@ -476,6 +501,7 @@ public class KeyboardView extends View {
 
     /**
      * Returns the state of the shift key of the keyboard, if any.
+     *
      * @return true if the shift is in a pressed state, false otherwise. If there is
      * no shift key on the keyboard or there is no keyboard attached, it returns false.
      * @see KeyboardView#setShifted(boolean)
@@ -490,6 +516,7 @@ public class KeyboardView extends View {
     /**
      * Enables or disables the key feedback popup. This is a popup that shows a magnified
      * version of the depressed key. By default the preview is enabled.
+     *
      * @param previewEnabled whether or not to enable the key feedback popup
      * @see #isPreviewEnabled()
      */
@@ -499,6 +526,7 @@ public class KeyboardView extends View {
 
     /**
      * Returns the enabled state of the key feedback popup.
+     *
      * @return whether or not the key feedback popup is enabled
      * @see #setPreviewEnabled(boolean)
      */
@@ -509,6 +537,7 @@ public class KeyboardView extends View {
     public void setVerticalCorrection(int verticalOffset) {
 
     }
+
     public void setPopupParent(View v) {
         mPopupParent = v;
     }
@@ -525,6 +554,7 @@ public class KeyboardView extends View {
      * When enabled, calls to {@link OnKeyboardActionListener#onKey} will include key
      * codes for adjacent keys.  When disabled, only the primary key code will be
      * reported.
+     *
      * @param enabled whether or not the proximity correction is enabled
      */
     public void setProximityCorrectionEnabled(boolean enabled) {
@@ -564,6 +594,7 @@ public class KeyboardView extends View {
      * Compute the average distance between adjacent keys (horizontally and vertically)
      * and square it to get the proximity threshold. We use a square here and in computing
      * the touch distance from a key's center to avoid taking a square root.
+     *
      * @param keyboard
      */
     private void computeProximityThreshold(Keyboard keyboard) {
@@ -605,7 +636,7 @@ public class KeyboardView extends View {
         List<Character> allLabels = SecureKeyboardUtils.INSTANCE.decryptKeyboard(mKeyboard, helper);
         int index = 0;
         for (Key key : mKeys) {
-            if (key.codes[0] == Keyboard.KEYCODE_SHIFT || key.codes[0] == Keyboard.KEYCODE_DELETE || key.codes[0] == Keyboard.KEYCODE_SPACE) {
+            if (key.codes[0] == Keyboard.KEYCODE_SHIFT || key.codes[0] == Keyboard.KEYCODE_DELETE || key.codes[0] == Keyboard.KEYCODE_SPACE || key.codes[0] == Keyboard.KEYCODE_POINT_NUMBER_BOARD) {
                 continue;
             }
             key.label = String.valueOf(allLabels.get(index));
@@ -663,7 +694,7 @@ public class KeyboardView extends View {
             keyBackground.setState(drawableState);
 
             // Switch the character to uppercase if shift is pressed
-            String label = key.label == null? null : adjustCase(key.label).toString();
+            String label = key.label == null ? null : adjustCase(key.label).toString();
 
             final Rect bounds = keyBackground.getBounds();
             if (key.width != bounds.right ||
@@ -730,12 +761,12 @@ public class KeyboardView extends View {
         int closestKey = NOT_A_KEY;
         int closestKeyDist = mProximityThreshold + 1;
         Arrays.fill(mDistances, Integer.MAX_VALUE);
-        int [] nearestKeyIndices = mKeyboard.getNearestKeys(x, y);
+        int[] nearestKeyIndices = mKeyboard.getNearestKeys(x, y);
         final int keyCount = nearestKeyIndices.length;
         for (int i = 0; i < keyCount; i++) {
             final Key key = keys[nearestKeyIndices[i]];
             int dist = 0;
-            boolean isInside = key.isInside(x,y);
+            boolean isInside = key.isInside(x, y);
             if (isInside) {
                 primaryIndex = nearestKeyIndices[i];
             }
@@ -780,7 +811,7 @@ public class KeyboardView extends View {
         List<Character> allLabels = SecureKeyboardUtils.INSTANCE.decryptKeyboard(mKeyboard, helper);
         int idx = 0;
         for (Key key : mKeys) {
-            if (key.codes[0] == Keyboard.KEYCODE_SHIFT || key.codes[0] == Keyboard.KEYCODE_DELETE || key.codes[0] == Keyboard.KEYCODE_SPACE) {
+            if (key.codes[0] == Keyboard.KEYCODE_SHIFT || key.codes[0] == Keyboard.KEYCODE_DELETE || key.codes[0] == Keyboard.KEYCODE_SPACE || key.codes[0] == Keyboard.KEYCODE_POINT_NUMBER_BOARD) {
                 continue;
             }
             key.label = String.valueOf(allLabels.get(idx));
@@ -908,7 +939,7 @@ public class KeyboardView extends View {
         } else {
             // TODO: Fix this if centering is brought back
             mPopupPreviewX = 160 - mPreviewText.getMeasuredWidth() / 2;
-            mPopupPreviewY = - mPreviewText.getMeasuredHeight();
+            mPopupPreviewY = -mPreviewText.getMeasuredHeight();
         }
         mHandler.removeMessages(MSG_REMOVE_PREVIEW);
         getLocationInWindow(mCoordinates);
@@ -950,6 +981,7 @@ public class KeyboardView extends View {
      * Requests a redraw of the entire keyboard. Calling {@link #invalidate} is not sufficient
      * because the keyboard renders the keys to an off-screen buffer and an invalidate() only
      * draws the cached buffer.
+     *
      * @see #invalidateKey(int)
      */
     public void invalidateAllKeys() {
@@ -962,6 +994,7 @@ public class KeyboardView extends View {
      * Invalidates a key so that it will be redrawn on the next repaint. Use this method if only
      * one key is changing it's content. Any changes that affect the position or size of the key
      * may not be honored.
+     *
      * @param keyIndex the index of the key in the attached {@link Keyboard}.
      * @see #invalidateAllKeys
      */
@@ -1247,7 +1280,7 @@ public class KeyboardView extends View {
         public void addMovement(MotionEvent ev) {
             long time = ev.getEventTime();
             final int N = ev.getHistorySize();
-            for (int i=0; i<N; i++) {
+            for (int i = 0; i < N; i++) {
                 addPoint(ev.getHistoricalX(i), ev.getHistoricalY(i),
                         ev.getHistoricalEventTime(i));
             }
@@ -1258,10 +1291,10 @@ public class KeyboardView extends View {
             int drop = -1;
             int i;
             final long[] pastTime = mPastTime;
-            for (i=0; i<NUM_PAST; i++) {
+            for (i = 0; i < NUM_PAST; i++) {
                 if (pastTime[i] == 0) {
                     break;
-                } else if (pastTime[i] < time-LONGEST_PAST_TIME) {
+                } else if (pastTime[i] < time - LONGEST_PAST_TIME) {
                     drop = i;
                 }
             }
@@ -1272,12 +1305,12 @@ public class KeyboardView extends View {
             final float[] pastX = mPastX;
             final float[] pastY = mPastY;
             if (drop >= 0) {
-                final int start = drop+1;
-                final int count = NUM_PAST-drop-1;
+                final int start = drop + 1;
+                final int count = NUM_PAST - drop - 1;
                 System.arraycopy(pastX, start, pastX, 0, count);
                 System.arraycopy(pastY, start, pastY, 0, count);
                 System.arraycopy(pastTime, start, pastTime, 0, count);
-                i -= (drop+1);
+                i -= (drop + 1);
             }
             pastX[i] = x;
             pastY[i] = y;
@@ -1302,7 +1335,7 @@ public class KeyboardView extends View {
             final long oldestTime = pastTime[0];
             float accumX = 0;
             float accumY = 0;
-            int N=0;
+            int N = 0;
             while (N < NUM_PAST) {
                 if (pastTime[N] == 0) {
                     break;
@@ -1310,16 +1343,16 @@ public class KeyboardView extends View {
                 N++;
             }
 
-            for (int i=1; i < N; i++) {
-                final int dur = (int)(pastTime[i] - oldestTime);
+            for (int i = 1; i < N; i++) {
+                final int dur = (int) (pastTime[i] - oldestTime);
                 if (dur == 0) continue;
                 float dist = pastX[i] - oldestX;
-                float vel = (dist/dur) * units;   // pixels/frame.
+                float vel = (dist / dur) * units;   // pixels/frame.
                 if (accumX == 0) accumX = vel;
                 else accumX = (accumX + vel) * .5f;
 
                 dist = pastY[i] - oldestY;
-                vel = (dist/dur) * units;   // pixels/frame.
+                vel = (dist / dur) * units;   // pixels/frame.
                 if (accumY == 0) accumY = vel;
                 else accumY = (accumY + vel) * .5f;
             }
